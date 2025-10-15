@@ -1,21 +1,60 @@
-<header id="header" class="fixed top-4 mx-auto my-0 bg-negro text-white rounded-full px-8 py-4 flex gap-60 items-center z-50 transition-all duration-300">
+<header id="header" class="fixed top-4 mx-auto my-0 rounded-full px-8 py-4 flex gap-60 items-center z-50 transition-all duration-300 bg-negro">
 
-    <a href="/" class="inline-block whitespace-nowrap text-3xl hover:scale-102 transition-all duration-300">
+    <a href="/" class="inline-block whitespace-nowrap text-3xl hover:scale-105 transition-all duration-300 relative z-10">
         <span class="font-bold text-secundario">Gym</span><span class="font-bold italic text-primario">Stats</span>
     </a>
 
-    <ul class="flex gap-20">
-        <li><a href="/" class="text-secundario font-semibold hover:text-primario-dark transition-all duration-300">Inicio</a></li>
-        <li><a href="/progreso" class="text-secundario font-semibold hover:text-primario-dark transition-all duration-300">Progreso</a></li>
-        <li><a href="/cuenta" class="text-secundario font-semibold hover:text-primario-dark transition-all duration-300">Cuenta</a></li>
+    <ul id="nav-links" class="flex gap-8 relative z-10">
+        <li><a href="/" class="text-secundario font-semibold transition-all duration-300 px-3 py-2">Inicio</a></li>
+        <li><a href="/progreso" class="text-secundario font-semibold transition-all duration-300 px-3 py-2">Progreso</a></li>
+        <li><a href="/cuenta" class="text-secundario font-semibold transition-all duration-300 px-3 py-2">Cuenta</a></li>
+        
+        <div 
+            id="menu-backdrop"
+            class="
+            absolute bg-primario-dark/50 backdrop-blur-sm rounded-full 
+            translate-x-[var(--left)] translate-y-[var(--top)]
+            left-0 top-0
+            w-[var(--width)] h-[var(--height)]
+            transition-all duration-300 
+            ease-in-out opacity-0 -z-10"
+        ></div>
     </ul>
 
 </header>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const header = document.getElementById('header');
+        const header = document.getElementById('header')
+        const navLinks = document.getElementById('nav-links')
+        const listItems = document.querySelectorAll("#nav-links li")
+        const menuBackdrop = document.getElementById("menu-backdrop") as HTMLElement
             
+        listItems.forEach((item) => {
+            item.addEventListener("mouseenter", () => {
+                const navPos = navLinks?.getBoundingClientRect()
+                const itemPos = item.getBoundingClientRect()
+
+                if (navPos) {
+                    const left = itemPos.left - navPos.left
+                    const top = itemPos.top - navPos.top
+
+                    menuBackdrop.style.setProperty("--left", `${left}px`);
+                    menuBackdrop.style.setProperty("--top", `${top}px`);
+                    menuBackdrop.style.setProperty("--width", `${itemPos.width}px`);
+                    menuBackdrop.style.setProperty("--height", `${itemPos.height}px`);
+
+                    menuBackdrop.style.opacity = "1";
+                    menuBackdrop.style.visibility = "visible";
+                }
+            });
+
+            item.addEventListener("mouseleave", () => {
+                menuBackdrop.style.opacity = "0";
+                menuBackdrop.style.visibility = "hidden";
+            });
+        });
+
         if (header) {
             window.addEventListener('scroll', function() {
                 const scrollY = window.scrollY;
