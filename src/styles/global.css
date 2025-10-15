@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@plugin "@midudev/tailwind-animations";
+
+@theme {
+  --color-primario: #BF2541;
+  --color-secundario: #EBEBEB;
+  --color-negro: #1D1D27;
+}
+
+:root {
+  --color-primario: #BF2541;
+  --color-secundario: #EBEBEB;
+  --color-negro: #1D1D27;
+}
+
+html {
+  scroll-behavior: smooth;
+}
