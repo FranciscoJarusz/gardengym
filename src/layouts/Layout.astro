@@ -1,34 +1,47 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import '@/styles/global.css';
+
+interface Props {
+    title?: string;
+    description?: string;
+}
+
+const { 
+    title = 'GymStats - Seguimiento de Entrenamientos',
+    description = 'GymStats es una aplicación web para rastrear y analizar tus entrenamientos de gimnasio.'
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="stylesheet" href="/styles/global.css" />
-		<meta name="description" content="GymStats es una aplicación web para rastrear y analizar tus entrenamientos de gimnasio." />
-		<title>GymStats - Seguimiento de Entrenamientos</title>
-	</head>
-	<body>
-		<Header />
-		<slot />
-		<Footer />
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="stylesheet" href="/styles/global.css" />
+        <meta name="description" content={description} />
+        <title>{title}</title>
+    </head>
+    <body>
+        <Header />
+        <main class="Bg-white w-full max-w-5xl min-h-screen">
+            <slot />
+        </main>
+        <Footer />
+    </body>
 </html>
 
 <style is:global>
-	html {
-		font-family: 'Montserrat', sans-serif;
-	}
+    html {
+        font-family: 'Montserrat', sans-serif;
+    }
 
-	body {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
+    body {
+        display: flex;
+        background-color: var(--color-negro);
+        flex-direction: column;
+        align-items: center;
+    }
 </style>
