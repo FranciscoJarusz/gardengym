@@ -50,6 +50,13 @@
   --color-gris-oscuro: #424242;
 }
 
+@font-face {
+  font-family: 'nyghtserif';
+  src: url('/fonts/NygthSerif-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html {
   scroll-behavior: smooth;
 }
