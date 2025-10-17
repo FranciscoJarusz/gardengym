@@ -3,51 +3,19 @@
 @plugin "@midudev/tailwind-animations";
 
 @theme {
-  --color-primario: #BF2541;
-  --color-primario-light: #D94965;
-  --color-primario-dark: #8F1B30;
+  --color-primario: #bfec75;
   
   --color-secundario: #EBEBEB;
-  --color-secundario-light: #FFFFFF;
-  --color-secundario-dark: #C8C8C8;
   
   --color-negro: #1D1D27;
-  --color-negro-light: #2D2D3A;
-  --color-negro-dark: #0D0D12;
-  
-  --color-acento: #FFD700;
-  --color-exito: #28A745;
-  --color-advertencia: #FFC107;
-  --color-error: #DC3545;
-  --color-info: #17A2B8;
-  
-  --color-gris-claro: #F5F5F5;
-  --color-gris-medio: #9E9E9E;
-  --color-gris-oscuro: #424242;
 }
 
 :root {
-  --color-primario: #BF2541;
-  --color-primario-light: #D94965;
-  --color-primario-dark: #8F1B30;
+  --color-primario: #bfec75;
   
   --color-secundario: #EBEBEB;
-  --color-secundario-light: #FFFFFF;
-  --color-secundario-dark: #C8C8C8;
   
-  --color-negro: #1D1D27;
-  --color-negro-light: #2D2D3A;
-  --color-negro-dark: #0D0D12;
-  
-  --color-acento: #FFD700;
-  --color-exito: #28A745;
-  --color-advertencia: #FFC107;
-  --color-error: #DC3545;
-  --color-info: #17A2B8;
-  
-  --color-gris-claro: #F5F5F5;
-  --color-gris-medio: #9E9E9E;
-  --color-gris-oscuro: #424242;
+  --color-negro: #262626;
 }
 
 @font-face {
