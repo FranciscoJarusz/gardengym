@@ -1,18 +1,19 @@
-<header id="header" class="fixed top-4 mx-auto my-0 rounded-full px-8 py-4 flex gap-60 items-center z-50 transition-all duration-300 bg-negro">
+<header id="header" class="fixed top-4 mx-auto my-0 rounded-full px-8 py-4 flex gap-80 items-center z-50 transition-all duration-300 bg-negro">
 
-    <a href="/" class="flex items-center whitespace-nowrap hover:scale-105 transition-all duration-300 relative z-10">
-        <span class="text-3xl font-bold text-secundario">Gym</span><span class="text-4xl italic font-semibold text-primario" style="font-family: 'nyghtserif', serif;">Stats</span>
+    <a href="/">
+        <img src="/gardengym_logo.png" alt="Logo de GardenGym" class="h-15 w-15"/>
     </a>
 
     <ul id="nav-links" class="flex gap-8 relative z-10">
         <li><a href="/" class="text-secundario font-semibold transition-all duration-300 px-3 py-2">Inicio</a></li>
-        <li><a href="/progreso" class="text-secundario font-semibold transition-all duration-300 px-3 py-2">Progreso</a></li>
+        <li><a href="/progreso" class="text-secundario font-semibold transition-all duration-300 px-3 py-2">Rutinas</a></li>
+        <li><a href="/ejercicios" class="text-secundario font-semibold transition-all duration-300 px-3 py-2">Ejercicios</a></li>
         <li><a href="/cuenta" class="text-secundario font-semibold transition-all duration-300 px-3 py-2">Cuenta</a></li>
         
         <div 
             id="menu-backdrop"
             class="
-            absolute bg-primario-dark/50 backdrop-blur-sm rounded-full 
+            absolute bg-primario backdrop-blur-sm rounded-full 
             translate-x-[var(--left)] translate-y-[var(--top)]
             left-0 top-0
             w-[var(--width)] h-[var(--height)]
@@ -31,9 +32,11 @@
         const menuBackdrop = document.getElementById("menu-backdrop") as HTMLElement
             
         listItems.forEach((item) => {
+
             item.addEventListener("mouseenter", () => {
                 const navPos = navLinks?.getBoundingClientRect()
                 const itemPos = item.getBoundingClientRect()
+                const link = item.querySelector("a")
 
                 if (navPos) {
                     const left = itemPos.left - navPos.left
@@ -46,12 +49,22 @@
 
                     menuBackdrop.style.opacity = "1";
                     menuBackdrop.style.visibility = "visible";
+                    
+                    if (link) {
+                        link.style.color = "var(--color-negro)";
+                    }
                 }
             });
 
             item.addEventListener("mouseleave", () => {
+                const link = item.querySelector("a")
+                
                 menuBackdrop.style.opacity = "0";
                 menuBackdrop.style.visibility = "hidden";
+
+                if (link) {
+                    link.style.color = "";
+                }
             });
         });
 
@@ -62,8 +75,8 @@
                 if (scrollY > 100) {
                     header.style.backdropFilter = 'blur(5px)';
                     (header.style as any).webkitBackdropFilter = 'blur(5px)';
-                    header.style.border = '1px solid #2D2D3A';
-                    header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+                    header.style.border = '1px solid #2E2E2E';
+                    header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.2)';
                 } else {
                     header.style.backdropFilter = 'none';
                     (header.style as any).webkitBackdropFilter = 'none';
